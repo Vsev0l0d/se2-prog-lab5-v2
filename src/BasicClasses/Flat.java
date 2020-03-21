@@ -32,19 +32,6 @@ public class Flat implements Comparable<Flat> {
         this.house = house;
     }
 
-    public Flat(Integer id, String name, Coordinates coordinates, LocalDate creationDate, long area, Long numberOfRooms, Furnish furnish, View view, Transport transport, House house) {
-        this.id = id;
-        this.name = name;
-        this.coordinates = coordinates;
-        this.creationDate = creationDate;
-        this.area = area;
-        this.numberOfRooms = numberOfRooms;
-        this.furnish = furnish;
-        this.view = view;
-        this.transport = transport;
-        this.house = house;
-    }
-
     public long getArea(){
         return area;
     }
