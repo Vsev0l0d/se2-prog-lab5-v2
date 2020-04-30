@@ -8,7 +8,9 @@ import BasicClasses.Flat;
 public class CollectionUtils {
     public static boolean checkExist(Integer ID) {
         for (Flat flat:CollectionManager.getCollection()) {
-            return flat.getId().equals(ID);
+            if (flat.getId().equals(ID)){
+                return true;
+            }
         }
         return false;
     }
