@@ -10,6 +10,7 @@ import java.util.*;
 public class CollectionManager {
     private static TreeSet<Flat> collection;
     private static java.time.LocalDate collectionCreationDate;
+    private static List res = new ArrayList();
 
     public static void initSet() {
         if (collection == null) { collection = new TreeSet<>(); collectionCreationDate = java.time.LocalDate.now(); }
@@ -65,19 +66,30 @@ public class CollectionManager {
     }
 
     public static void remove_greater(Flat flat) {
+        res.clear();
         collection.forEach(listFlat -> {
             if (listFlat.compareTo(flat) > 0) {
+                appendToList(listFlat.getId());
                 collection.remove(listFlat);
-            } else { System.out.println("Таких элементов не найдено"); }
+            }
         });
+
+        if (res.isEmpty()) System.out.println("Таких элементов не найдено");
+        System.out.println("Из коллекции удалены элементы с ID: " + res.toString().replaceAll("[\\[\\]]", ""));
+
     }
 
     public static void remove_lower(Flat flat) {
+        res.clear();
         collection.forEach(listFlat -> {
             if (listFlat.compareTo(flat) < 0) {
+                appendToList(listFlat.getId());
                 collection.remove(listFlat);
-            } else { System.out.println("Таких элементов не найдено"); }
+            }
         });
+
+        if (res.isEmpty()) System.out.println("Таких элементов не найдено");
+        System.out.println("Из коллекции удалены элементы с ID: " + res.toString().replaceAll("[\\[\\]]", ""));
     }
 
     public static void print_field_ascending_number_of_rooms(Long numberOfRooms) {
@@ -129,5 +141,9 @@ public class CollectionManager {
             System.out.println("    Элементы созданные " + entry.getKey() + " :\n");
             entry.getValue().forEach(CollectionUtils::display);
         }
+    }
+
+    public static void appendToList(Object o){
+        res.add(o);
     }
 }
